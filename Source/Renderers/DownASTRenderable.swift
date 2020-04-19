@@ -25,6 +25,30 @@ extension DownASTRenderable {
 }
 
 public struct DownASTRenderer {
+    public static func parseDocument(_ string: String, options: DownOptions = .default) -> UnsafeMutablePointer<cmark_node>? {
+        cmark_gfm_core_extensions_ensure_registered()
+
+        let parser = cmark_parser_new(options.rawValue);
+
+        if let strikethrough = cmark_find_syntax_extension("strikethrough") {
+            cmark_parser_attach_syntax_extension(parser, strikethrough)
+        }
+
+        if let table = cmark_find_syntax_extension("table") {
+            cmark_parser_attach_syntax_extension(parser, table)
+        }
+
+        string.withCString {
+            cmark_parser_feed(parser, $0, strlen($0));
+        }
+
+        let document = cmark_parser_finish(parser);
+
+        cmark_parser_free(parser);
+
+        return document
+    }
+
     /// Generates an abstract syntax tree from the given CommonMark Markdown string
     ///
     /// **Important:** It is the caller's responsibility to call `cmark_node_free(ast)` on the returned value
@@ -35,13 +59,7 @@ public struct DownASTRenderer {
     /// - Returns: An abstract syntax tree representation of the Markdown input
     /// - Throws: `MarkdownToASTError` if conversion fails
     public static func stringToAST(_ string: String, options: DownOptions = .default) throws -> UnsafeMutablePointer<cmark_node> {
-        var tree: UnsafeMutablePointer<cmark_node>?
-        string.withCString {
-            let stringLength = Int(strlen($0))
-            tree = cmark_parse_document($0, stringLength, options.rawValue)
-        }
-
-        guard let ast = tree else {
+        guard let ast = parseDocument(string, options: options) else {
             throw DownErrors.markdownToASTError
         }
         return ast
