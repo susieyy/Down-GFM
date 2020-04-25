@@ -38,6 +38,19 @@ public struct DownASTRenderer {
             cmark_parser_attach_syntax_extension(parser, table)
         }
 
+        if let tasklist = cmark_find_syntax_extension("tasklist") {
+            cmark_parser_attach_syntax_extension(parser, tasklist)
+        }
+
+        if let autolink = cmark_find_syntax_extension("autolink") {
+            cmark_parser_attach_syntax_extension(parser, autolink)
+        }
+
+        // wed don't need tagfilter
+//        if let tagfilter = cmark_find_syntax_extension("tagfilter") {
+//            cmark_parser_attach_syntax_extension(parser, tagfilter)
+//        }
+
         string.withCString {
             cmark_parser_feed(parser, $0, strlen($0));
         }
