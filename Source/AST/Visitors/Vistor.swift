@@ -33,6 +33,7 @@ public protocol Visitor {
     func visit(strong node: Strong) -> Result
     func visit(link node: Link) -> Result
     func visit(image node: Image) -> Result
+    func visit(baseNode node: BaseNode) -> Result
     func visitChildren(of node: Node) -> [Result]
 }
 
@@ -62,7 +63,7 @@ extension Visitor {
             case is Image:          return visit(image: child as! Image)
             default:
                 assertionFailure("Unexpected child")
-                return nil
+                return visit(baseNode: child as! BaseNode)
             }
         }
     }

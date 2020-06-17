@@ -172,6 +172,12 @@ extension AttributedStringVisitor: Visitor {
         styler.style(image: s, title: node.title, url: node.url)
         return s
     }
+
+    public func visit(baseNode node: BaseNode) -> NSMutableAttributedString {
+        let s = visitChildren(of: node).joined
+        styler.style(strong: s)
+        return s
+    }
 }
 
 // MARK: - Helper extensions

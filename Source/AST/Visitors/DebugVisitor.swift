@@ -114,5 +114,9 @@ public class DebugVisitor: Visitor {
     public func visit(image node: Image) -> String {
         return reportWithChildren(node)
     }
+
+    public func visit(baseNode node: BaseNode) -> String {
+        return reportWithChildren(node)
+    }
 }
 
