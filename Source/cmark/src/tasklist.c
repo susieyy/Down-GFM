@@ -1,7 +1,7 @@
 #include "tasklist.h"
-#include <parser.h>
-#include <render.h>
-#include <html.h>
+#include "parser.h"
+#include "render.h"
+#include "html.h"
 #include "ext_scanners.h"
 
 typedef enum {
