@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Down",
+    name: "DownGFM",
     platforms: [
         .macOS("10.11"),
         .iOS("9.0"),
@@ -11,7 +11,7 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "Down",
+            name: "DownGFM",
             targets: ["Down"]
         )
     ],
