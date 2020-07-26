@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import libcmark
+import libcmark_gfm
 
 public class SoftBreak: BaseNode {}
 

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import libcmark
+import libcmark_gfm
 
 public protocol DownCommonMarkRenderable: DownRenderable {
     func toCommonMark(_ options: DownOptions, width: Int32) throws -> String

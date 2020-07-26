@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.2
 
 import PackageDescription
 
@@ -15,19 +15,15 @@ let package = Package(
             targets: ["Down"]
         )
     ],
+    dependencies: [
+        .package(name: "libcmark_gfm", url: "https://github.com/KristopherGBaker/libcmark_gfm.git", from: "0.29.3")
+    ],    
     targets: [
         .target(
-            name: "libcmark",
-            dependencies: [],
-            path: "Source/cmark",
-            exclude: ["include"],
-            publicHeadersPath: "./"
-        ),
-        .target(
             name: "Down",
-            dependencies: ["libcmark"],
+            dependencies: ["libcmark_gfm"],
             path: "Source/",
-            exclude: ["cmark", "Down.h"]
+            exclude: ["Down.h"]
         ),
         .testTarget(
             name: "DownTests",

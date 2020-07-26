@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import libcmark
+import libcmark_gfm
 
 public protocol DownASTRenderable: DownRenderable {
     func toAST(_ options: DownOptions) throws -> UnsafeMutablePointer<cmark_node>
