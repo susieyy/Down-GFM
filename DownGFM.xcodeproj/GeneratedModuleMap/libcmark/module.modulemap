@@ -1,4 +1,0 @@
-module libcmark {
-    umbrella "/Users/susieyy/src/github.com/susieyy/Down-GFM/Source/cmark"
-    export *
-}

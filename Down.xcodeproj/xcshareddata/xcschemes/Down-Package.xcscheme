@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DownGFM::Down"
+               BlueprintIdentifier = "Down::Down"
                BuildableName = "Down.framework"
                BlueprintName = "Down"
-               ReferencedContainer = "container:DownGFM.xcodeproj">
+               ReferencedContainer = "container:Down.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DownGFM::DownTests"
+               BlueprintIdentifier = "Down::DownTests"
                BuildableName = "DownTests.xctest"
                BlueprintName = "DownTests"
-               ReferencedContainer = "container:DownGFM.xcodeproj">
+               ReferencedContainer = "container:Down.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
